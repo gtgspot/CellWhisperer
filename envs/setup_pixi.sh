@@ -9,6 +9,7 @@ cd "$REPO_ROOT"
 echo "==> Step 1: Installing pixi environment..."
 pixi install
 
+echo "==> Step 2: Building web frontend (using Node.js from pixi environment)..."
 if [ "$(uname -s)" = "Darwin" ]; then
     echo "==> Step 2: Fixing macOS duplicate LC_RPATH in accumulation_tree..."
     # accumulation_tree 0.6.4 ships a .so with a duplicate LC_RPATH which causes
@@ -45,6 +46,7 @@ cp client/build/csp-hashes.json server/common/web/
 
 cd "$REPO_ROOT"
 
+echo "==> Step 3: Verifying installation..."
 echo "==> Step 4: Verifying installation..."
 pixi run cellxgene --version
 
